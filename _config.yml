@@ -30,7 +30,7 @@ twitter_username: jekyllrb
 github_username:  michal-sladecek
 
 # Build settings
-theme: jekyll-theme-hacker 
+theme: hacker
 plugins:
   - jekyll-feed
 
