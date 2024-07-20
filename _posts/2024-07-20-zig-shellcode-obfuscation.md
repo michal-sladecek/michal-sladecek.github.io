@@ -145,6 +145,7 @@ What I wanted to do next is to reduce this entropy - my idea was to simply prepe
 
 This basically encompasses my overall feelings of Zig - I like the language, and I think it has big potential for offensive tooling, but it's obvious that the language is still largely in development. Features of this language get added/removed pretty often, and new versions often bring breaking changes. Many codes found on the internet do not work anymore and the code in this blog might not work with the next release of Zig. I'm very hopeful for the future though, especially once the `comptime` memory issues get resolved. I like the language and I plan to write more blogs about it. My next blog will be about using `comptime` for hashing and a custom GetModuleHandle function.
 
+The last thing that I loved about the whole experience was the ease of cross compilation from Linux to Windows. You don't need to involve mingw, the output platform is just a compiler flag for Zig compiler. All code for this blog can be found in my [GitHub](https://github.com/michal-sladecek/zig_experiments). Changes might be necessary to run it.
 
 
 
