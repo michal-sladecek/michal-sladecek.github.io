@@ -6,6 +6,7 @@ author: Michal
 ---
 
 I've been reading up about Fibers recently, and their offensive use is pretty interesting. I came up with very simple technique of spoofing return address  that I haven't seen mentioned during my reading of other blogs. Although not the best technique to spoof callstack, it's one that's very simple, does not need lots of code to work and does not invoke many syscalls.
+If you just want the code, it's in my GH: https://github.com/michal-sladecek/zig_experiments/blob/master/src/fibers_ret_spoofing.zig .
 
 ## Theory
 
@@ -17,7 +18,7 @@ There's been lot of offensive research about fibers. Fibers have been used to:
 - [sleep outside of shellcode memory to hide its callstack](https://github.com/Kudaes/Fiber)
 
 Another very interesting research is [Immoral Fiber](https://github.com/JanielDary/ImmoralFiber), though it mostly focuses on Fiber Local Storage which we don't use.
-Fibers have also been used by real APTs - APT41 uses fibers to schedule function calls in the [MoonWalk](https://www.zscaler.com/blogs/security-research/moonwalk-deep-dive-updated-arsenal-apt41-part-2) malware. 
+Fibers have also been used by real threat actors - APT41 uses fibers to schedule function calls in the [MoonWalk](https://www.zscaler.com/blogs/security-research/moonwalk-deep-dive-updated-arsenal-apt41-part-2) malware. 
 
 ### Vectored Exception Handler
 [VEH](https://learn.microsoft.com/en-us/windows/win32/debug/vectored-exception-handling) is a way to add our own exception handlers in WinAPI. When exception s.a. wrong memory access is encountered, the program calls our specified handler.
@@ -68,6 +69,10 @@ The test tests three properties of function `callFunctionWithSpoofedRet`:
 Let's see the `callFunctionWithSpoofedRet` function. This to function handles the creation of exception handler and the fibers:
 
 ```zig
+
+var main_fiber: *anyopaque = undefined;
+
+
 fn callFunctionWithSpoofedRet(function_ptr: *const anyopaque, arguments: anytype) u64 {
       // 7 is enough for demonstration
     var parameters: [7]u64 = undefined;
