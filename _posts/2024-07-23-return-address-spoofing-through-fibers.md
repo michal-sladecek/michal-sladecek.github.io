@@ -6,7 +6,7 @@ author: Michal
 ---
 
 I've been reading up about Fibers recently, and their offensive use is pretty interesting. I came up with very simple technique of spoofing return address  that I haven't seen mentioned during my reading of other blogs. Although not the best technique to spoof callstack, it's one that's very simple, does not need lots of code to work and does not invoke many syscalls.
-If you just want the code, it's in my [GH](https://github.com/michal-sladecek/zig_experiments/blob/master/src/fibers_ret_spoofing.zig).
+If you just want the code(in Zig), it's in my [GH](https://github.com/michal-sladecek/zig_experiments/blob/master/src/fibers_ret_spoofing.zig).
 
 ## Theory
 
@@ -31,7 +31,7 @@ When functions are called, they know where to return to from the *stack*. By goi
 There's lots of [research](https://dtsec.us/2023-09-15-StackSpoofin/) on call stack/return address spoofing so I won't list it here. The one most similar to this technique is the [VulcanRaven](https://github.com/WithSecureLabs/CallStackSpoofer), which also uses VEH. However, using Fibers we can remove the need for creating new threads in this technique.
 
 ## The technique
-The technique uses two components - fiber and Vectored Exception Handler. We use fiber switch to setup new stack and call the wanted function. The function fails in the end, invoking our VEH which switches back to the main fiber, which can seamlessly continue in execution.
+The technique uses two components - fiber and Vectored Exception Handler. We use fiber switch to setup new stack and call the wanted function. The function fails to return in the end, invoking our VEH which switches back to the main fiber, which can seamlessly continue in execution.
 
 First function I will show are our testing functions. These do not really contain anything of interest, but showcase what we want to achieve:
 ```zig
