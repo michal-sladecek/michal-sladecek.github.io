@@ -6,7 +6,7 @@ author: Michal
 ---
 
 I've been reading up about Fibers recently, and their offensive use is pretty interesting. I came up with very simple technique of spoofing return address  that I haven't seen mentioned during my reading of other blogs. Although not the best technique to spoof callstack, it's one that's very simple, does not need lots of code to work and does not invoke many syscalls.
-If you just want the code, it's in my GH: https://github.com/michal-sladecek/zig_experiments/blob/master/src/fibers_ret_spoofing.zig .
+If you just want the code, it's in my [GH](https://github.com/michal-sladecek/zig_experiments/blob/master/src/fibers_ret_spoofing.zig).
 
 ## Theory
 
