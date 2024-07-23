@@ -30,6 +30,7 @@ author:
   linkedin: sladecekmichal
   twitter: Sideload3d
 baseurl: "/" # the subpath of your site, e.g. /blog
+  avatar: /assets/rip0.png # change with your own avatar
 
 url: "https://protectionbynofunction.com/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  michal-sladecek
