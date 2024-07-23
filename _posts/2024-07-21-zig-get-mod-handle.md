@@ -1,7 +1,8 @@
 ---
 layout: post
-title: "Compile time hashing in Zig"
-author: "Michal"
+title: Compile time hashing in Zig
+date: 2024-7-21 01:11 -0300
+author: Michal
 ---
 
 
@@ -294,3 +295,5 @@ We can see that the tests still pass and that hashes are different on each run:
 ## Conclusion
 
 Compile time hashing is very convenient to do in Zig. I also like that Zig's stdlib containst the windows undocumented APIs and I do not have to copy bindings for each struct, such as when coding in Visual Studio. Stay tuned for more Zig content in the future, there are still many features that I did not yet get to try such as inline assembly or more playing with Zig's build system.  The code was again pushed to my Github and you can play with it yourself.
+
+ {% include social-media-share.html %}

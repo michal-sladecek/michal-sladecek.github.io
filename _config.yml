@@ -18,19 +18,33 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Michal's blog  
-email: michalsladecek233@gmail.com
+title: Protection By No Function  
 description: >- # this means to ignore newlines until "baseurl:"
-  I write about security, offensive tooling development
-  and red teaming.
+  I'm Michal, I write about security, offensive tooling development
+  and red teaming. 
+mode: dark # default theme "dark" | "light"
+email: michalsladecek233@gmail.com
+author:
+  name: Michal Sladecek
+  github: michal-sladecek
+  linkedin: sladecekmichal
+  twitter: Sideload3d
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://michal-sladecek.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+
+url: "https://protectionbynofunction.com/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  michal-sladecek
 
+social_links: true  # If true show social links
+rss: true # For add icon to link feed.xml
+
 # Build settings
-theme: jekyll-theme-hacker
+#theme: jekyll-theme-hacker
+remote_theme: "piharpi/jekyll-klise"
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
